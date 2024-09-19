@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Tabela de Pessoas</title>
+    <link rel="icon" type="image/png" href="/img/list.png" >
+<style>
+
+    /* ---------- Estilos gerais da página ---------- */
+
+    body {
+            background-color: #d8d8d8; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+}
+
+    h1 {
+      text-align: center;
+}
+
+/* ---------- Estilos gerais da tabela ---------- */
+
+    table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  border: 2px solid black;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Estilo para os dados e cabeçalho ---------- */
+
+    td, th {
+  border: 1px solid #1a1313;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* ---------- Estilo para o cabeçalho da tabela ---------- */
+
+    th {
+  background-color: #45a049;
+  color: white;
+  font-weight: bold;
+}
+
+/* ---------- Listras alternadas para as linhas ---------- */
+
+    tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* ---------- Estilo ao passar o mouse sobre as linhas ---------- */
+
+    tr:hover {
+  background-color: #bccfbc;
+}
+
+/* ---------- Estilos para os dados de largura fixa ---------- */
+
+    td {
+  word-wrap: break-word;
+  max-width: 200px;
+}
+
+/* ---------- Estilo para o botão "Voltar" ---------- */
+
+    .voltar {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: #45a049;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-family: Arial, sans-serif;
+}
+
+    .voltar:hover {
+        background-color: #3e8e41;
+}
+
+    </style>
+</head>
+<body>
+
+
+  
+    <h1>Pessoas Cadastradas</h1>
+
+      <!---------- Botão para retornar à página inicial ---------->
+
+              <a href="/" class="voltar">Voltar</a>
+
+    <!-------------------- Cabeçalho da Tabela -------------------->
+
+    <table>
+        <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Data de Nascimento</th>
+              <th>Idade</th>
+              <th>Casado(a)</th>
+              <th>Altura</th>
+              <th>Peso</th>
+              <th>IMC</th>
+              <th>Cadastrado(a)</th>
+            </tr>
+          </thead>
+
+      <!-------------------- Corpo da Tabela -------------------->
+
+          <tbody>
+        <% for(i = 0; i < tabela.rowCount; i++){ %> 
+        
+    <!-------------------- Informações da Tabela -------------------->  
+
+              <tr>
+                <td><%= tabela.rows[i].codigo %></td>
+                <td><%= tabela.rows[i].nome %></td>
+                <td><%= tabela.rows[i].datanasc.toLocaleDateString('pt-br') %></td>
+                <td><%= tabela.rows[i].idade %></td>
+                <td><%= tabela.rows[i].casado ? 'Sim' : 'Não' %></td>
+                <td><%= tabela.rows[i].altura %></td>
+                <td><%= tabela.rows[i].peso %></td>
+                <td><%= tabela.rows[i].imc.toFixed(2) %></td>
+                <td><%= tabela.rows[i].cadastro.toLocaleString('pt-br') %></td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+
+    </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus Sant'Ana</title>
+    <link rel="icon" type="image/png" href="/img/register.png" >
+    <style>
+
+/* ---------- Estilo global do corpo ---------- */
+
+body {
+  margin: 20px;
+  background-color: #f4f4f9;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Estilo para o título principal ---------- */
+
+h1 {
+  text-align: center;
+  color: #4CAF50;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Estilos dos fieldset's ---------- */
+
+fieldset {
+  border: 2px solid #4CAF50;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+/* ---------- Estilo para as legend's ---------- */
+
+legend {
+  font-weight: bold;
+  color: #4CAF50;
+  padding: 0 10px;
+  font-size: 2.4em;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------- Estilos para input's de texto, data, número e data e hora atual ---------- */
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="datetime-local"] {
+  width: calc(100% - 24px);
+  padding: 10px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* -------------------- Estilo para checkboxes -------------------- */
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  line-height: 20px;
+}
+
+.checkbox-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4CAF50;
+  border-radius: 4px;
+  background-color: #fff;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"]:checked + .checkbox-label::before {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+}
+
+.checkbox-label::after {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  transition: transform 0.2s;
+}
+
+input[type="checkbox"]:checked + .checkbox-label::after {
+  transform: translateY(-50%) scale(1) rotate(45deg);
+}
+
+/* ---------- Estilo para os botões ---------- */
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+        }
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* ---------- Estilo para os placeholder's ---------- */
+
+input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* ---------- Formulários alinhados no centro ---------- */
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ---------- Estilo para as label's e textos próximos aos input's ---------- */
+
+form input {
+  display: block;
+}
+
+/* ---------- Alinhamento dos inputs e botões dentro do formulário de listas ---------- */
+
+.form-listas input[type="text"] {
+  width: auto;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.form-listas .btn-group {
+  margin-left: 10px;
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Cadastros de Pessoas</h1>
+
+<!-------------------- Informações -------------------->
+
+    <form action="/cadastrar" method="post">
+        <fieldset>
+            <legend>Informações</legend>
+        Código:<input type="text" name="txtCodigo" placeholder="Necessário apenas para 'Alterar' e 'Excluir'"/> <br> <br>
+        Nome:<input type="text" name="txtNome" placeholder="Nome"/> <br> <br>
+        Data de Nascimento:<input type="date" name="txtDatanasc" /> <br> <br>
+        Casado: <br> <br>
+            <div class="checkbox-container">
+                <input type="checkbox" id="casado" name="txtCasado"/>
+                <label class="checkbox-label" for="casado"></label>
+            </div>
+            <br> <br>
+        Altura:<input type="text" name="txtAltura" placeholder="0.00"/> <br> <br>
+        Peso:<input type="text" name="txtPeso" placeholder="00"/> <br> <br>
+        
+<!-------------------- Botões de Interação -------------------->
+
+      <div class="button-container">
+        <input type="submit" name="b1" value="Criar Tabela" />
+        <input type="submit" name="b1" value="Gravar" />
+        <input type="submit" name="b1" value="Alterar" />
+        <input type="submit" name="b1" value="Remover" />
+        <input type="submit" name="b1" value="Deletar Tabela" />
+      </div>
+
+    </fieldset>
+</form>
+<!-------------------- Botões de Consultas -------------------->
+
+    <form action="/listas" method="post">
+        <fieldset>
+            <legend>Listas</legend>
+      <div>
+        <input type="submit" name="b1" value="Listar" />  <br> <br>
+        <input type="submit" name="b1" value="Acima do Peso" /> <br> <br>
+        Idade Mínima:<input type="number" name="txtIdade" placeholder="EX: 25"/>
+        <input type="submit" name="b1" value="Filtrar Idade" /> <br> <br>
+        <input type="submit" name="b1" value="Casados" /> <br> <br>
+        Parte do Nome:<input type="text" name="txtNome" placeholder="EX: filtro 'A' "/>
+        <input type="submit" name="b1" value="Nomes" />
+      </div>
+        </fieldset>
+    </form>
+</body>
+</html>
